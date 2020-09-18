@@ -1,14 +1,12 @@
 import com.cwctravel.hudson.plugins.extended_choice_parameter.ExtendedChoiceParameterDefinition
 
-Map modules = [:]
-
 pipeline {
     agent any
     stages {
         stage('Setup Pipeline') {
             steps {
                 script {
-                    modules.utils = load "scripts/utils.groovy"
+                    def acmVersionStructure = load "scripts/ACMVersionStructure.groovy"
 
                     // Read local stored version json file and deserialize to an object
                     final jsonFileName = 'version.json'
@@ -16,7 +14,7 @@ pipeline {
                     final versionFile = new groovy.json.JsonSlurperClassic().parseText(versionFileText)
                     final versionBuildNumber = versionFile.build_version
 
-                    def (majorRelease, minorRelease, buildRelease, patchRelease) = modules.utils.getACMReportsIncrementedVersion(versionBuildNumber)
+                    def (majorRelease, minorRelease, buildRelease, patchRelease) = acmVersionStructure.getIncrementedVersionScenarios(versionBuildNumber)
                     println "Incremented Version Variables: Major: ${majorRelease}, Minor: ${minorRelease}, Build: ${buildRelease}, Patch: ${patchRelease}"
 
                     properties([parameters([new ExtendedChoiceParameterDefinition(
