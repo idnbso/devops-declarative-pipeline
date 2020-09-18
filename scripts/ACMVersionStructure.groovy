@@ -1,9 +1,9 @@
 final String numberSeparatorToken = '.'
-final GString versionSchemeRegex = /\d+(($numberSeparatorToken\d+){0,$totalSubVersionNumbers})?/
 final ArrayList<String> versionPartsNames = [ "Major", "Minor", "Build", "Patch" ]
 final int minimumTotalVersionNumbers = 1
 final int maximumTotalVersionNumbers = versionPartsNames.size()
 final int totalSubVersionNumbers = versionPartsNames.size() - 1
+final GString versionSchemeRegex = /\d+(($numberSeparatorToken\d+){0,$totalSubVersionNumbers})?/
 
 String getVersionFormat() { versionPartsNames.join(numberSeparatorToken) }
 
