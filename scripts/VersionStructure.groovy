@@ -1,4 +1,4 @@
-package org.util
+package scripts
 
 class VersionStructure {
     final String numberSeparatorToken

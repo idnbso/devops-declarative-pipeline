@@ -8,7 +8,7 @@ pipeline {
         stage('Setup Pipeline') {
             steps {
                 script {
-                    modules.utils = load "utils.groovy"
+                    modules.utils = load "scripts/utils.groovy"
 
                     // Read local stored version json file and deserialize to an object
                     final jsonFileName = 'version.json'
