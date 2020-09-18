@@ -1,3 +1,5 @@
+import scripts.VersionStructure
+
 ArrayList<String> getACMReportsIncrementedVersion(versionBuildNumber) {
     println "Current Version: ${versionBuildNumber}"
 
