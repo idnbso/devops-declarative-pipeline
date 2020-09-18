@@ -13,8 +13,8 @@ ArrayList<String> getIncrementedVersionScenarios(String versionBuildNumber) {
     return versionPartsNames.collect { getIncrementedVersionNumber(versionBuildNumber, versionPartsNames.indexOf(it)) }
 }
 
-String getIncrementedVersionNumber(String versionBuildNumber, int subVersionPosition = totalSubVersionNumbers) {
-    def totalVersionNumbers = versionPartsNames.size()
+String getIncrementedVersionNumber(String versionBuildNumber, int subVersionPosition) {
+    final totalVersionNumbers = versionPartsNames.size()
 
     def getIncrementVersionExceptionMessage = {mode -> L:{
         def exceptionMessage = "Illegal version number ${mode} of ${versionBuildNumber} "
