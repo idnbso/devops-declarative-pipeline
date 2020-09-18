@@ -1,5 +1,3 @@
-package scripts
-
 class VersionStructure {
     final String numberSeparatorToken
     final ArrayList<String> versionPartsNames
@@ -46,14 +44,14 @@ class VersionStructure {
             throw new IllegalArgumentException(getIncrementVersionExceptionMessage('input'))
         }
 
-        final versionNumbers = versionBuildNumber.tokenize(numberSeparatorToken)
-        final versionNumber = versionNumbers[subVersionPosition] as int
+        final subVersionNumbers = versionBuildNumber.tokenize(numberSeparatorToken)
+        final subVersionNumberToIncrement = subVersionNumbers[subVersionPosition] as int
         
-        versionNumbers[subVersionPosition] = versionNumber + 1
+        subVersionNumbers[subVersionPosition] = subVersionNumberToIncrement + 1
         def index = 0
-        versionNumbers = versionNumbers.collect { index++ > subVersionPosition ? '0' : it }
+        final incrementedSubVersionNumbers = subVersionNumbers.collect { index++ > subVersionPosition ? '0' : it }
 
-        final incrementedVersionNumber = versionNumbers.join(numberSeparatorToken)
+        final incrementedVersionNumber = incrementedSubVersionNumbers.join(numberSeparatorToken)
 
         if (getIsVersionBuildNumberValid(versionBuildNumber) == false) {
             throw new UnsupportedOperationException(getIncrementVersionExceptionMessage('output'))
