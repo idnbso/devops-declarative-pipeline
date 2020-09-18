@@ -15,7 +15,7 @@ ArrayList<String> getIncrementedVersionScenarios(String versionBuildNumber) {
     return versionPartsNames.collect { getIncrementedVersionNumber(versionBuildNumber, versionPartsNames.indexOf(it)) }
 }
 
-String getIncrementedVersionNumber(String versionBuildNumber, int subVersionPosition) {
+String getIncrementedVersionNumber(String versionBuildNumber, int subVersionPosition = totalSubVersionNumbers) {
     final totalVersionNumbers = versionPartsNames.size()
 
     def getIncrementVersionExceptionMessage = {mode -> L:{
