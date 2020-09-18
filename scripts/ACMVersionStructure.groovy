@@ -1,11 +1,11 @@
 import groovy.transform.Field
 
-@Field String numberSeparatorToken = '.'
-@Field ArrayList<String> versionPartsNames = [ "Major", "Minor", "Build", "Patch" ]
-@Field int minimumTotalVersionNumbers = 1
-@Field int maximumTotalVersionNumbers = versionPartsNames.size()
-@Field int totalSubVersionNumbers = versionPartsNames.size() - 1
-@Field GString versionSchemeRegex = /\d+(($numberSeparatorToken\d+){0,$totalSubVersionNumbers})?/
+@Field final String numberSeparatorToken = '.'
+@Field final ArrayList<String> versionPartsNames = [ "Major", "Minor", "Build", "Patch" ]
+@Field final int minimumTotalVersionNumbers = 1
+@Field final int maximumTotalVersionNumbers = versionPartsNames.size()
+@Field final int totalSubVersionNumbers = versionPartsNames.size() - 1
+@Field final GString versionSchemeRegex = /\d+(($numberSeparatorToken\d+){0,$totalSubVersionNumbers})?/
 
 String getVersionFormat() { versionPartsNames.join(numberSeparatorToken) }
 
